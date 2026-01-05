@@ -35,34 +35,34 @@ public class NPCRUN : MonoBehaviour
     void Update()
     {
         血條組件.transform.forward = Camera.main.transform.forward;
-        if (目標!= null)
-        {
-            導航.SetDestination(目標.position);
-            距離 = Vector3.Distance(目標.position,this.transform.position);
-            if(距離 <= 攻擊距離)
-            {
-                動畫器.SetBool("isWalk", false);
-                開始攻擊 = true;
-            }
-            else
-            {
-                動畫器.SetBool("isWalk",true);
-                開始攻擊 = false;
-            }
-            if(開始攻擊)
-            {
-                if(血量<= 0) return;
-                if(Time.time >= 下次可攻擊時間)
-                {
-                    動畫器.SetTrigger("isAttack");
-                    下次可攻擊時間 = Time.time+攻擊距離;
-                }
-            }
-        }
-        else
-        {
-            目標 = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        //if (目標!= null)
+        //{
+           // 導航.SetDestination(目標.position);
+           // 距離 = Vector3.Distance(目標.position,this.transform.position);
+           // if(距離 <= 攻擊距離)
+           // {
+            //    動畫器.SetBool("isWalk", false);
+            //    開始攻擊 = true;
+           // }
+           // else
+           // {
+               // 動畫器.SetBool("isWalk",true);
+               // 開始攻擊 = false;
+          //  }
+            //if(開始攻擊)
+           // {
+              //  if(血量<= 0) return;
+              //  if(Time.time >= 下次可攻擊時間)
+               // {
+                //    動畫器.SetTrigger("isAttack");
+               //     下次可攻擊時間 = Time.time+攻擊距離;
+              //  }
+          //  }
+       // }
+     //   else
+       // {
+       //     目標 = GameObject.FindGameObjectWithTag("Player").transform;
+       // }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,7 +77,7 @@ public class NPCRUN : MonoBehaviour
             if (血量 == 0)
             {
                 動畫器.SetTrigger("isDead");
-                Destroy(this.gameObject, 7f);
+                Destroy(this.gameObject, 8f);
             }
             else
             {
